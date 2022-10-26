@@ -1,0 +1,220 @@
+{
+  "name": "status_card",
+  "version": 32,
+  "source-key": {
+    "type": "figma",
+    "file": "thkNRQrt7D3dd55InmlyzJ",
+    "node": "2:16",
+    "version": "2524184483"
+  },
+  "default": "StatusCard",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "group",
+        "id": "Chip-Container"
+      },
+      {
+        "type": "group",
+        "id": "Text Content"
+      },
+      {
+        "type": "adin_component",
+        "id": "Chip",
+        "key": "chip"
+      },
+      {
+        "type": "group",
+        "id": "Title & Description "
+      },
+      {
+        "type": "text",
+        "id": "title"
+      },
+      {
+        "type": "text",
+        "id": "body"
+      }
+    ],
+    "modes": {
+      "StatusCard": {
+        "rules": [
+          {
+            "id": "top_level",
+            "border-radius": "28.0",
+            "is-structured": "false",
+            "children": [
+              "Chip-Container",
+              "Text Content"
+            ],
+            "background-color": {
+              "alpha": "1.0",
+              "hue": "120.0",
+              "saturation": "0.01239669421487599",
+              "value": "0.9490196078431372"
+            },
+            "clip-content": "false"
+          },
+          {
+            "id": "Chip-Container",
+            "padding": "24.0",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": "0.0"
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": "76.0"
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "312.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "children": [
+              "Chip"
+            ],
+            "item-spacing": "8.0"
+          },
+          {
+            "id": "Text Content",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": "312.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "main-axis-align": "start",
+            "cross-axis-align": "start",
+            "children": [
+              "Title & Description "
+            ],
+            "clip-content": "false"
+          },
+          {
+            "id": "Chip",
+            "design": "Configuration=Warning",
+            "text": "$Chip text",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            }
+          },
+          {
+            "id": "Title & Description ",
+            "padding": {
+              "left": "24.0",
+              "top": "24.0",
+              "right": "24.0"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "main-axis-align": "start",
+            "cross-axis-align": "start",
+            "children": [
+              "title",
+              "body"
+            ],
+            "item-spacing": "16.0"
+          },
+          {
+            "id": "title",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "color": {
+              "alpha": "1.0",
+              "hue": "0.0",
+              "saturation": "0.0",
+              "value": "0.11764705882352941"
+            },
+            "text-content": "Using Variants",
+            "overflow": "visible",
+            "max-lines": "-1",
+            "text-align-vertical": "center",
+            "text-size": "24.0",
+            "line-height": "1.3333332824707032"
+          },
+          {
+            "id": "body",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": "1.0"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "color": {
+              "alpha": "1.0",
+              "hue": "160.00000000000009",
+              "saturation": "0.04225352112676061",
+              "value": "0.2784313725490196"
+            },
+            "text-content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+            "overflow": "visible",
+            "max-lines": "-1",
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "line-height": "1.4285714721679688"
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "Chip text": {
+      "data-type": "text",
+      "required": false,
+      "description": ""
+    }
+  },
+  "previews": [
+    {
+      "design": "StatusCard",
+      "size": {
+        "width": 312.0,
+        "height": 232.0
+      },
+      "parameters": {
+        "Chip text": "Warning"
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}
