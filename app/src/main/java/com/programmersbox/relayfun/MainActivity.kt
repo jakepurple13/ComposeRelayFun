@@ -3,7 +3,9 @@ package com.programmersbox.relayfun
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -13,7 +15,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -22,11 +24,13 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.relay.compose.RelayContainer
 import com.programmersbox.relayfun.hellocard.HelloCard
 import com.programmersbox.relayfun.newscard.NewsCard
 import com.programmersbox.relayfun.newscard.View
 import com.programmersbox.relayfun.statuscard.StatusCard
 import com.programmersbox.relayfun.ui.theme.RelayFunTheme
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,12 +59,28 @@ fun Greeting(name: String) {
         MyChip(text = "Hello there!")
         StatusCard(
             chipText = "Hello there!",
+            title = "Title!!!",
+            body = "Hello here!",
             modifier = Modifier.fillMaxWidth()
         )
         StatusCard(
             chipText = "Hello there!",
-            modifier = Modifier.fillMaxWidth()
+            title = "Title!!!",
+            body = "Hello here!",
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
         )
+        RelayContainer(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            StatusCard(
+                chipText = "Warning",
+                title = "Using Variants",
+                body = "Hello here!",
+                modifier = Modifier.size(width = 312.dp, height = 232.dp)
+            )
+        }
         HelloCard(
             titleTextContent = "Hello $name!",
             image = rememberVectorPainter(image = Icons.Default.Add)
@@ -96,6 +116,21 @@ fun DefaultPreview() {
     RelayFunTheme(darkTheme = true) {
         Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
             Greeting("Android")
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun StatusCardPreview() {
+    RelayFunTheme(darkTheme = true) {
+        RelayContainer {
+            StatusCard(
+                chipText = "Warning",
+                title = "Title!!!",
+                body = "Hello here!",
+                modifier = Modifier.rowWeight(1.0f)
+            )
         }
     }
 }
@@ -143,10 +178,12 @@ fun BaseChip(
     text: String,
     backgroundColor: Color = Color.LightGray
 ) {
+    var background by remember { mutableStateOf(backgroundColor) }
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(size = 8.dp))
-            .background(backgroundColor)
+            .background(animateColorAsState(background).value)
+            .clickable { background = Random.nextColor(alpha = 255) }
     ) {
         Column(
             modifier = Modifier
@@ -165,3 +202,11 @@ fun BaseChip(
         }
     }
 }
+
+@JvmOverloads
+fun Random.nextColor(
+    alpha: Int = nextInt(0, 255),
+    red: Int = nextInt(0, 255),
+    green: Int = nextInt(0, 255),
+    blue: Int = nextInt(0, 255)
+): Color = Color(alpha = alpha, red = red, green = green, blue = blue)
